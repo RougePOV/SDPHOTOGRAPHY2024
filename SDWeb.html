@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Photography Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin: 1em 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        section {
+            padding: 2em 0;
+            border-bottom: 1px solid #ddd;
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+        .portfolio img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            margin-bottom: 1em;
+        }
+        .videos iframe {
+            width: 100%;
+            height: 315px;
+            margin-bottom: 2em;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 2em;
+        }
+        @media (min-width: 768px) {
+            .portfolio, .videos {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .portfolio img, .videos iframe {
+                width: 48%;
+                margin-bottom: 2%;
+            }
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        .modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Drone Photography Portfolio</h1>
+    </header>
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#projects">Projects</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#videos">Videos</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Welcome to my drone photography portfolio! My name is [Sonny Donis], and I am a passionate drone photographer. Capturing stunning aerial shots and showcasing the beauty of our world from above is my specialty. With a keen eye for detail and a love for adventure, I strive to bring unique perspectives to my photography.</p>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <p>Here are some of the exciting projects I have worked on:</p>
+            <ul>
+                <li>Project 1: [Brief description of the project]</li>
+                <li>Project 2: [Brief description of the project]</li>
+                <li>Project 3: [Brief description of the project]</li>
+            </ul>
+        </section>
+        <section id="portfolio" class="portfolio">
+            <h2>Portfolio</h2>
+            <img src="H:\My portfolio\DJI_0613.jpg" alt="Drone Photo 1" onclick="openModal(this.src)">
+            <img src="H:\My portfolio\DJI_0614.jpg" alt="Drone Photo 2" onclick="openModal(this.src)">
+            <img src="H:\My portfolio\DJI_0631.jpg" alt="Drone Photo 3" onclick="openModal(this.src)">
+            <img src="H:\My portfolio\DJI_0646.jpg" alt="Drone Photo 4" onclick="openModal(this.src)">
+        </section>
+        <section id="videos" class="videos">
+            <h2>Videos</h2>
+            <iframe src="https://www.youtube.com/embed/la-5XdwRgAE" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/la-5XdwRgAE" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/la-5XdwRgAE" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/la-5XdwRgAE" frameborder="0" allowfullscreen></iframe>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>If you would like to get in touch with me, please use the following contact information:</p>
+            <p>Email: <a href="mailto:sdonis7396@gmail.com">sdonis7396@gmail.com</a></p>
+            <p>Phone: (970) 690-7884</p>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 [Sonny Donis]. All rights reserved.</p>
+    </footer>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modal-img" src="">
+        </div>
+    </div>
+
+    <script>
+        function openModal(src) {
+            document.getElementById('myModal').style.display = "block";
+            document.getElementById('modal-img').src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+
+        // Close the modal when clicking anywhere outside the image
+        window.onclick = function(event) {
+            var modal = document.getElementById('myModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
